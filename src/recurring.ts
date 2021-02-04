@@ -12,13 +12,13 @@ export type Fun<T> = (arr: T) => T[];
  * @template T
  * @param {Fun<T>} fun
  */
-const createRecurringFunction = <T>(fun: Fun<T>) => (startValue: T, limit: number): T[] | undefined => {
+const createRecurringFunction = <T>(fun: Fun<T>, context: unknown) => (startValue: T, limit: number): T[] => {
   const result = [startValue];
   let index = 0;
   let arr = [...result];
   while (index < limit) {
     for (const num of arr) {
-      arr = fun(num);
+      arr = fun.call(context, num);
       result.push(...arr);
     }
     index++
