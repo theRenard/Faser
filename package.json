@@ -2,9 +2,9 @@
   "name": "v4",
   "version": "1.0.0",
   "description": "Boilerplate with just TS and nothing else",
-  "main": "index.js",
+  "main": "src/index.html",
   "scripts": {
-    "start": "parcel src/index.html --open",
+    "start": "parcel src/index.html -p 9000 --open",
     "build": "parcel build src/index.html --out-dir dist --public-url './'"
   },
   "repository": {
@@ -34,5 +34,8 @@
   "staticFiles": {
     "staticPath": "public",
     "watcherGlob": "**"
+  },
+  "dependencies": {
+    "phaser": "^3.52.0"
   }
 }
