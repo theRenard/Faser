@@ -8,6 +8,7 @@ import {
   LAMPO_MAXOFFSET,
   LAMPO_SCALA
 } from '~/constants.json';
+import createRecurringFunction from './recurring';
 
 export default class Game extends Scene {
   private scoreText!: Phaser.GameObjects.DynamicBitmapText;
@@ -34,10 +35,12 @@ export default class Game extends Scene {
   update (time, delta): void {
     if (debug) this.fpsText.setText('FPS: ' + (1000/delta).toFixed(3) + '\n');
     if (time % 60 === 0) {
-
       const lampo = new Lampo(this, LAMPO_GENERAZIONI, LAMPO_MAXOFFSET, LAMPO_SCALA);
-      const armaLampo = lampo.generazione(this.scale.width / 2, this.scale.height / 2, this.pointer.x, this.pointer.y, 1);
-      armaLampo.forEach((segmento) => {
+      const segmentoIniziale = lampo.generazione2(this.scale.width / 2, this.scale.height / 2, this.pointer.x, this.pointer.y, 1);
+      const generazioneRecorsiva = createRecurringFunction(lampo.funzioneT);
+      const risultato = generazioneRecorsiva(segmentoIniziale, 10);
+
+      risultato?.forEach((segmento) => {
         segmento.draw();
       });
     }
