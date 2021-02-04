@@ -35,11 +35,6 @@ export default class Segment {
 
    }
 
-   // punto medio non serve si può usare la funzione GetMidPoint
-   clone(): Segment {
-      return new Segment(this.scene, this.startX, this.startY, this.endX, this.endY, this.level)
-   }
-
    draw(): void {
       this.line.x1 = this.startX;
       this.line.y1 = this.startY;

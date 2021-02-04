@@ -33,12 +33,13 @@ export default class Game extends Scene {
 
   update (time, delta): void {
     if (debug) this.fpsText.setText('FPS: ' + (1000/delta).toFixed(3) + '\n');
+    if (time % 60 === 0) {
 
-    const lampo = new Lampo(this, LAMPO_GENERAZIONI, LAMPO_MAXOFFSET, LAMPO_SCALA);
-    const armaLampo = lampo.generazione(this.scale.width / 2, this.scale.height / 2, this.pointer.x, this.pointer.y, 1);
-    armaLampo.forEach((segmento) => {
-      segmento.draw();
-    });
-
+      const lampo = new Lampo(this, LAMPO_GENERAZIONI, LAMPO_MAXOFFSET, LAMPO_SCALA);
+      const armaLampo = lampo.generazione(this.scale.width / 2, this.scale.height / 2, this.pointer.x, this.pointer.y, 1);
+      armaLampo.forEach((segmento) => {
+        segmento.draw();
+      });
+    }
   }
 }
