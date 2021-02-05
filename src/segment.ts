@@ -19,7 +19,7 @@ export default class Segment {
       this.line = new Phaser.Geom.Line();
    }
 
-   draw(style, style1): void {
+   draw(style: Phaser.GameObjects.Graphics, style1: Phaser.GameObjects.Graphics): void {
       this.line.x1 = this.startX;
       this.line.y1 = this.startY;
       this.line.x2 = this.endX;
@@ -28,12 +28,15 @@ export default class Segment {
       if (this.level <= 1) {
          style.strokeLineShape(this.line);
          // this.scene.tweens.add({
-         //    targets: style,
-         //    duration: 400,
+            //    targets: style,
+            //    duration: 400,
          //    alpha: 0
          // })
+         setTimeout(() => {
+            style.clear();
+         }, 100)
       } else {
-         style1.strokeLineShape(this.line);
+         // style1.strokeLineShape(this.line);
          // this.scene.tweens.add({
          //    targets: style1,
          //    duration: 600,
