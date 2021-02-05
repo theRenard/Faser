@@ -1,4 +1,7 @@
 import Game from "~/Game";
+import {
+   LAMPO_DURATA
+ } from '~/constants.json';
 export default class Segment {
    public scene!: Game;
    public level!: number
@@ -34,12 +37,12 @@ export default class Segment {
          // })
          setTimeout(() => {
             style.clear();
-         }, 100)
+         }, LAMPO_DURATA + 100)
       } else {
          style1.strokeLineShape(this.line);
          setTimeout(() => {
             style1.clear();
-         }, 100)
+         }, LAMPO_DURATA + 100)
          // this.scene.tweens.add({
          //    targets: style1,
          //    duration: 600,
