@@ -14,6 +14,8 @@ export default class Game extends Scene {
   private scoreText!: Phaser.GameObjects.DynamicBitmapText;
   private fpsText!: Phaser.GameObjects.Text;
   private pointer!: Phaser.Input.Pointer;
+  private style: Phaser.GameObjects.Graphics;
+  private style1: Phaser.GameObjects.Graphics;
 
   constructor() {
     super({
@@ -28,6 +30,19 @@ export default class Game extends Scene {
         font: 'bold 26px Arial',
       });
     }
+    this.style = this.add.graphics({
+      lineStyle: {
+         width: 3,
+         color: 0xff0000
+      }
+   });
+   this.style1 = this.add.graphics({
+      lineStyle: {
+         width: 1,
+         color: 0xff0000,
+         alpha: 0.5
+      }
+   });
     this.pointer = this.input.activePointer;
   }
 
@@ -37,11 +52,10 @@ export default class Game extends Scene {
       const lampo = new Lampo(this, LAMPO_GENERAZIONI, LAMPO_MAXOFFSET, LAMPO_SCALA);
       const segmentoIniziale = lampo.generazione2(this.scale.width / 2, this.scale.height / 2, this.pointer.x, this.pointer.y, 1);
       const generazioneRecorsiva = createRecurringFunction(lampo.funzioneT, lampo);
-      const risultato = generazioneRecorsiva(segmentoIniziale, 2);
+      const risultato = generazioneRecorsiva(segmentoIniziale, 10);
       for (let index = 0; index < risultato.length; index++) {
         const segmento = risultato[index];
-        segmento.draw();
-
+        segmento.draw(this.style, this.style1);
       }
   }
 }
