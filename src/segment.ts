@@ -36,7 +36,10 @@ export default class Segment {
             style.clear();
          }, 100)
       } else {
-         // style1.strokeLineShape(this.line);
+         style1.strokeLineShape(this.line);
+         setTimeout(() => {
+            style1.clear();
+         }, 100)
          // this.scene.tweens.add({
          //    targets: style1,
          //    duration: 600,

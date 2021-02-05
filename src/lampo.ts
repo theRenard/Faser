@@ -28,7 +28,7 @@ export default class Lampo {
         const listaSegmenti: Segment[] = [];
         let offsetSegmento = this.maxOffset; //il massimo Offset che posso dare ad un vertice del segmento
         // listaSegmenti.push(segmento);
-        for (let i = 0; i <= 5; i++) {
+        for (let i = 0; i <= 1; i++) {
             let puntoMedioX = Phaser.Math.Average([segmento.startX, segmento.endX]); //calcola il punto medio delle coordinate X dei punti iniziale e finale
             let puntoMedioY = Phaser.Math.Average([segmento.startY, segmento.endY]); //calcola il punto medio delle coordinate Y dei punti iniziale e finale
              //trascina il punto medio per un estensione casuale lungo la normale al segmento
