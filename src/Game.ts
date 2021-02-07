@@ -31,7 +31,7 @@ export default class Game extends Scene {
       });
     }
     this.pointer = this.input.activePointer;
-    setInterval(() => {
+    //setInterval(() => {
       this.style = this.add.graphics({
         lineStyle: {
             width: 3,
@@ -46,14 +46,14 @@ export default class Game extends Scene {
         }
       });
      const lampo = new Lampo(this, LAMPO_GENERAZIONI, LAMPO_MAXOFFSET, LAMPO_SCALA);
-     const segmentoIniziale = lampo.generazione2(this.scale.width / 2, this.scale.height / 2, this.pointer.x, this.pointer.y, 1);
+     const segmentoIniziale = lampo.generazione2(300, 300, 1000, 300, 1);
      const generazioneRecorsiva = createRecurringFunctionLast(lampo.funzioneT, lampo);
-     const risultato = generazioneRecorsiva(segmentoIniziale, 1);
+     const risultato = generazioneRecorsiva(segmentoIniziale, 2);
      for (let index = 0; index < risultato.length; index++) {
        const segmento = risultato[index];
        segmento.draw(this.style, this.style1);
      }
-   }, LAMPO_DURATA);
+   //}, LAMPO_DURATA);
   }
 
 

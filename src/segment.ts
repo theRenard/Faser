@@ -1,5 +1,8 @@
 import Game from "~/Game";
 import {
+   LAMPO_GENERAZIONI,
+   LAMPO_MAXOFFSET,
+   LAMPO_SCALA,
    LAMPO_DURATA
  } from '~/constants.json';
 export default class Segment {
@@ -11,8 +14,9 @@ export default class Segment {
    public endY!: number
    public scoreText!: Phaser.GameObjects.DynamicBitmapText;
    private line: Phaser.Geom.Line;
+   public offset!: number
 
-   constructor(scene: Game, startX: number, startY: number, endX: number, endY: number, level: number) {
+   constructor(scene: Game, startX: number, startY: number, endX: number, endY: number, level: number, offset: number) {
       this.scene = scene;
       this.startX = startX;
       this.startY = startY;
@@ -20,6 +24,7 @@ export default class Segment {
       this.endY = endY;
       this.level = level;
       this.line = new Phaser.Geom.Line();
+      this.offset = offset;
    }
 
    draw(style: Phaser.GameObjects.Graphics, style1: Phaser.GameObjects.Graphics): void {
@@ -37,12 +42,12 @@ export default class Segment {
          // })
          setTimeout(() => {
             style.clear();
-         }, LAMPO_DURATA + 100)
+         }, LAMPO_DURATA + 10000000)
       } else {
          style1.strokeLineShape(this.line);
          setTimeout(() => {
             style1.clear();
-         }, LAMPO_DURATA + 100)
+         }, LAMPO_DURATA + 10000000)
          // this.scene.tweens.add({
          //    targets: style1,
          //    duration: 600,
